@@ -1,214 +1,203 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Business Vish - Dashboard</title>
-    <style>
-        /* --- Global Styles & Neon Gradient Background --- */
-        body {
-            background: linear-gradient(135deg, #060b19 0%, #0a1931 50%, #15305b 100%);
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI BUSINESS VISH Dashboard</title>
 
-        /* --- Header & Title --- */
-        h1 {
-            font-size: 2.2rem;
-            text-shadow: 0 0 15px rgba(0, 149, 255, 0.6);
-            margin-bottom: 5px;
-            color: #00d2ff;
-        }
-        
-        h2.page-title {
-            font-size: 1.5rem;
-            color: #a5b4fc;
-            margin-top: 0;
-            margin-bottom: 25px;
-        }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
 
-        /* --- Navigation Bar --- */
-        nav {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 12px 20px;
-            border-radius: 12px;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 30px;
-        }
+body{
+background:linear-gradient(135deg,#020617,#0f172a,#1e3a8a);
+color:white;
+display:flex;
+min-height:100vh;
+overflow-x:hidden;
+}
 
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 6px 12px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
+.sidebar{
+width:260px;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(20px);
+padding:30px;
+display:flex;
+flex-direction:column;
+gap:15px;
+border-right:1px solid rgba(255,255,255,.1);
+}
 
-        nav a:hover {
-            background: rgba(0, 210, 255, 0.2);
-            color: #00d2ff;
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
-        }
+.sidebar h2{
+color:#38bdf8;
+margin-bottom:20px;
+}
 
-        .logout-btn {
-            margin-left: auto;
-            background: #ef4444;
-            border: none;
-            color: white;
-            padding: 6px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+.sidebar a{
+color:white;
+text-decoration:none;
+padding:12px;
+border-radius:10px;
+transition:.3s;
+}
 
-        .logout-btn:hover {
-            background: #dc2626;
-            box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
-        }
+.sidebar a:hover{
+background:rgba(56,189,248,.15);
+}
 
-        /* --- Dashboard Grid & Cards --- */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
+.sidebar button{
+margin-top:auto;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#38bdf8;
+font-weight:bold;
+cursor:pointer;
+}
 
-        .card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 16px;
-            text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.main{
+flex:1;
+padding:35px;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 210, 255, 0.4);
-            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.15);
-        }
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
 
-        .card h3 {
-            margin: 0 0 10px 0;
-            font-size: 1rem;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+.profile{
+background:rgba(255,255,255,.08);
+padding:10px 20px;
+border-radius:12px;
+}
 
-        .card .number {
-            font-size: 2rem;
-            font-weight: bold;
-            margin: 0;
-            color: #00d2ff;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
-        }
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
 
-        /* --- Table Section --- */
-        .table-section {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 16px;
-        }
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+padding:25px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(56,189,248,.15);
+}
 
-        .table-section h3 {
-            margin-top: 0;
-            margin-bottom: 15px;
-            color: #ffffff;
-        }
+.card h3{
+color:#cbd5e1;
+margin-bottom:10px;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
+.card h2{
+font-size:32px;
+color:#38bdf8;
+}
 
-        th {
-            padding: 12px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-            color: #a5b4fc;
-            font-weight: 600;
-        }
+.table-box{
+margin-top:35px;
+background:rgba(255,255,255,.08);
+padding:25px;
+border-radius:20px;
+}
 
-        td {
-            padding: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            color: #cbd5e1;
-        }
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
 
-        tr:hover td {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.02);
-        }
-    </style>
+th,td{
+padding:15px;
+border-bottom:1px solid rgba(255,255,255,.1);
+text-align:left;
+}
+
+@media(max-width:900px){
+body{
+flex-direction:column;
+}
+
+.sidebar{
+width:100%;
+border-right:none;
+border-bottom:1px solid rgba(255,255,255,.1);
+}
+}
+</style>
+
 </head>
+
 <body>
 
-    <h1>AI BUSINESS VISH</h1>
-    
-    <nav>
-        <a href="#">🏠 Dashboard</a>
-        <a href="#">👥 Users</a>
-        <a href="#">📩 Leads</a>
-        <a href="#">💼 Projects</a>
-        <a href="#">⚙ Settings</a>
-        <button class="logout-btn">Logout</button>
-    </nav>
+<div class="sidebar">
 
-    <h2 class="page-title">Dashboard</h2>
+<h2>🚀 AI BUSINESS VISH</h2>
 
-    <div class="stats-grid">
-        <div class="card">
-            <h3>Total Leads</h3>
-            <div class="number">0</div>
-        </div>
-        <div class="card">
-            <h3>Total Users</h3>
-            <div class="number">0</div>
-        </div>
-        <div class="card">
-            <h3>Projects</h3>
-            <div class="number">12</div>
-        </div>
-        <div class="card">
-            <h3>Revenue</h3>
-            <div class="number">₹52,000</div>
-        </div>
-    </div>
+<a href="#">🏠 Dashboard</a> <a href="#">📁 My Projects</a> <a href="#">👤 Profile</a>
 
-    <div class="table-section">
-        <h3>Recent Leads</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<button id="logoutBtn">Logout</button>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<h1>User Dashboard</h1>
+
+<div class="profile">
+<span id="userEmail">Loading...</span>
+</div>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Projects</h3>
+<h2 id="projectCount">0</h2>
+</div>
+
+<div class="card">
+<h3>Total Spent</h3>
+<h2 id="totalSpent">₹0</h2>
+</div>
+
+</div>
+
+<div class="table-box">
+
+<h2>My Projects</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Project Name</th>
+<th>Price</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="projectTable">
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script type="module" src="js/dashboard.js"></script>
 
 </body>
 </html>
