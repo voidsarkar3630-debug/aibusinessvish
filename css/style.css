@@ -104,3 +104,33 @@ footer{
 padding:30px;
 text-align:center;
 }
+.auth-container{
+max-width:400px;
+margin:120px auto;
+background:rgba(255,255,255,.08);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(15px);
+}
+
+.auth-container h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+.auth-container input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+}
+.auth-container button{
+width:100%;
+padding:15px;
+border:none;
+background:#38bdf8;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
