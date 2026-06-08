@@ -1,46 +1,17 @@
 alert("login.js loaded");
-import { auth } from "./firebase-config.js";
 
-import {
-signInWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const loginBtn = document.getElementById("loginBtn");
 
-const loginBtn =
-document.getElementById("loginBtn");
+alert("Button Found: " + (loginBtn !== null));
 
-loginBtn.addEventListener("click", async () => {
+loginBtn.addEventListener("click", () => {
 
-const email =
-document.getElementById("email").value;
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
 
-const password =
-document.getElementById("password").value;
-
-try{
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
+alert(
+"Email: " + email +
+"\nPassword: " + password
 );
-
-if(
-email ===
-"aibusinessvishwakarma@gmail.com"
-){
-window.location.href =
-"admin.html";
-}
-else{
-window.location.href =
-"dashboard.html";
-}
-
-}
-catch(error){
-
-alert(error.message);
-
-}
 
 });
